@@ -1,0 +1,204 @@
+
+//student management package
+import java.util.*;
+package studentmanagement;
+class student
+{
+    String name;
+    int roll;
+    String grade;
+    Scanner obj=new Scanner(System.in);
+   public void calculate()
+    {
+   int marks[]=new int[5];
+   int i;
+   int total =0,avg;
+   Scanner obj= new Scanner(System.in);
+   for(i=0;i<5;i++)
+   {
+       System.out.print("enter the mark"+(i+1)+":");
+       marks[i]=obj.nextInt();
+       total=total+marks[i];
+   }
+   avg=total/5;
+   System.out.println("the total mark is:"+total);
+   System.out.println("the average mark is:"+avg);
+   System.out.print("grade:");
+   if(avg>=90)
+   {
+    System.out.print("O");  
+   }
+   else if(avg>=80&&avg<90)
+   {
+     System.out.print("A");
+   }
+   else if(avg>=70&&avg<80)
+   {
+     System.out.print("B");
+   }
+   else if (avg>=60&&avg<70)
+   {
+       System.out.print("C");
+   }
+   else
+   {
+     System.out.print("D");  
+   }
+}
+    public void display()
+    {
+      System.out.print("student name:" +name);
+      name=obj.next();
+      System.out.print("rollno :" +roll);
+      roll=obj.nextInt();
+    }
+}
+public class StudentManager
+{
+  private ArrayList<String>students;
+  public StudentManager()
+  {
+    students=new ArrayList<>();
+  }
+  public void addStudent(String name)
+   {
+     students.add(name);
+   }
+  public  void deleteStudent(String name)
+   {
+    students.remove(name);  
+   }
+   public void display()
+   {
+   System.out.println("Student names:" +students);
+   }
+   
+ }
+ package pack1;
+ import studentmanagement.*;
+ class Main
+ {
+ public static void main (String[] args)
+ {
+ student s[] =new student[2];
+  int i;
+  Scanner obj1= new Scanner(System.in);
+  for(i=0;i<s.length;i++)
+  {
+      s[i]=new student();
+  }
+  System.out.println("....................");
+  System.out.println("STUDENT DETAILS");
+  for(i=0;i<=1;i++)
+ {
+  System.out.print("....................");
+  s[i].display();
+  student obj=new student();
+  obj.calculate();
+ }
+ System.out.print("....................");
+ StudentManager sm = new StudentManager();
+  sm.display();
+  System.out.println("to add students name in a list:");
+  sm.addStudent("karthik");
+  sm.addStudent("manju");  //adding  student names
+  sm.addStudent("keerthana");
+  sm.display();
+  System.out.println("updated student name list:");
+  sm.deleteStudent("manju");
+  sm.display();
+ }
+ }
+//protected property accessed from subclass
+  package pack.java;
+  public class Parentclass
+ {
+     protected int protectedproperty;
+     int defaultproperty;
+     public Parentclass()
+     {
+         protectedproperty=30;
+         defaultproperty=20;
+     }
+ }
+ //package pack.java;
+  public class Subclass extends Parentclass
+ {
+     public void accessPropeties()
+     {
+        System.out.println("protected property:"+protectedproperty);
+        System.out.println("default property:"+defaultproperty);
+     }
+ }
+ public class Main
+ {
+    public static void main(String[] args)
+    {
+        Subclass obj=new Subclass();
+        obj.accessPropeties();
+    }
+ }
+ //package creation
+ package pack1
+ class MathOperation
+ {
+     int add(int a,int b)
+     {
+        return a+b;
+     }
+     int subtract(int a,int b)
+     {
+        return a-b;
+     }
+ }
+ package pack2
+ class StringOperation
+ {
+     String concatenate(String str1, String str2)
+     {
+        String str3;
+        str3=str1.concat(str2);
+        return str3;
+     }
+       String  reversetype( String s)
+     {
+        String rev="";
+     for(int i=s.length()-1;i>=0;i--)
+     {
+        rev=rev+s.charAt(i) ;
+     }
+     return rev;
+     }
+ }
+ package pack3
+ class Calculator
+ {
+     int multiply(int a,int b)
+     {
+        return a*b ;
+     }
+     int divide(int a,int b)
+     {
+        return a/b;
+     }
+ }
+package pack4
+import pack1.*;
+import pack2.*;
+import pack3.*;
+public class Main
+{
+ public static void main(String[] args)
+ {
+     MathOperation obj= new MathOperation();
+     System.out.println("addition:" +obj.add(10,4));
+     System.out.println("subtraction:" +obj.add(6,2));
+     String s="java";
+     StringOperation obj1= new StringOperation();
+     System.out.println("concatenate string:" +obj1.concatenate("hello","world"));
+     System.out.println("reverse string:"+ obj1.reversetype("java program"));
+     Calculator obj3=new Calculator();
+     System.out.println("multiplication:" +obj3.multiply(26,8));
+     System.out.println("division:" +obj3.divide(30,5));
+ }
+}
